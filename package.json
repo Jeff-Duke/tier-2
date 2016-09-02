@@ -1,0 +1,38 @@
+{
+  "name": "tier-2",
+  "version": "1.0.0",
+  "description": "Tier 2 Turing project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylem038/tier-2.git"
+  },
+  "author": "Kyle, Jeff & Kirsten",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylem038/tier-2/issues"
+  },
+  "homepage": "https://github.com/kylem038/tier-2#readme",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "chai": "^3.5.0",
+    "css-loader": "^0.24.0",
+    "escape-html": "^1.0.3",
+    "firebase": "^3.3.0",
+    "firebase-tools": "^3.0.7",
+    "jquery": "^3.1.0",
+    "mocha": "^3.0.2",
+    "mocha-loader": "^0.7.1",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
