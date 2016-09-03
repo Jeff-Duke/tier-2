@@ -1,0 +1,46 @@
+//ConnectR
+
+//The need <code>
+I, the <user>, want to be at an <event.type> and quickly / easily <contact.exchange>
+& <contacts.store> information with other like-minded <users> no matter the browser
+type or phone type, while also receiving a reminder when to <user.followUp>
+with my <user.contacts>.
+
+-------- Value proposition
+
+
+As a user of this application I'm often at networking events / business meetings /
+conventions & I need to be able to quickly and easily exchange digital contact information
+with my new friends. Current technology makes it so I either have to write this
+information down, exchange physical business cards, manually enter this information
+in multiple places or hope that my new friends also share the same
+technology platforms that I do.
+
+---Acceptance Criteria  / Definition of Done
+
+When I enter this app I want to be able to quickly complete the task of saving
+my new contacts' information. The log-in process should be effortless and minimal.
+Being able to log-in with credentials I've already saved elsewhere would be
+preferable. Additionally I shouldn't need to log-in every time I open the app.
+
+The profile creation should also be limited to only the most important / pertinent
+information needed so I can know who my new contact is and how to follow-up
+with him / her. It should include ability to attach an image, name, email, phone &
+any of my new contacts' social media profiles.
+
+The contact list should make it easy to find my follow-ups / new contacts. A way
+to sort my contacts on a variety of criteria would be ideal. I'd also like to be able
+to add new contacts and flag certain contact for follow-up while I'm scrolling
+through my contact list.
+
+Within each contact's profile I should be able to find a way to contact them without
+having to search all over the place. Additionally, social media is more important than
+ever so having a easy way to record & find each person's social media handle is crucial.
+It'd also be nice to associate notes with each contact so I can remind myself what way
+that person prefers to be contacted, where I met that person & what we were talking about
+when we decided to exchange information.
+
+When I'm at a conference or convention I don't want to be held up inputing each
+and every piece of information. If I make a new connection & and they already have a
+profile created I'd like to easily be able to search for their name, find their profile
+and add them into my contact list.
