@@ -1,4 +1,6 @@
-@import "variables";
+@import 'variables';
+@import 'login-screen';
+@import 'home-screen';
 
 body {
   color: $primary-text-color;
@@ -10,6 +12,7 @@ body {
   flex-direction: column;
   justify-content: center;
   height: 600px;
+  width: 100vw;
 }
 
 h1 {
@@ -17,57 +20,7 @@ h1 {
   margin: 0;
 }
 
-// ***** LOGIN SCREEN *****
-.logo {
-  height: 100px;
-  width: 100px;
-  margin-bottom: 60px;
-}
 
-.login {
-  height: 60px;
-  margin-top: 20px;
-  width: 310px;
-}
-
-.facebook-login {
-  background: url('/img/facebook.png') no-repeat;
-}
-
-.twitter-login {
-  background: url('/img/twitter.png') no-repeat;
-}
-
-.google-login {
-  background: url('/img/google.png') no-repeat;
-}
-
-// ***** HOME SCREEN *****
-#home-screen-icon-layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.icon {
-  height: 100px;
-  width: 100px;
-}
-
-.home-screen-icons {
-  padding: 0 20px 0 20px;
-  text-align: center;
-}
-
-#home-screen-footer, #footer-with-profile {
-  width: 320px;
-}
-
-.footer-buttons {
-  height: 40px;
-  padding: 10px;
-  width: 40px;
-}
 
 // ***** USER PROFILE *****
 .profile-header {

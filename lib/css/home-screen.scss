@@ -1,0 +1,26 @@
+// ***** HOME SCREEN *****
+#home-screen-icon-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon {
+  height: 100px;
+  width: 100px;
+}
+
+.home-screen-icons {
+  padding: 0 20px 0 20px;
+  text-align: center;
+}
+
+#home-screen-footer, #footer-with-profile {
+  width: 320px;
+}
+
+.footer-buttons {
+  height: 40px;
+  padding: 10px;
+  width: 40px;
+}
