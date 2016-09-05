@@ -1,0 +1,26 @@
+// ***** USER PROFILE *****
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  width: 320px;
+}
+
+form input {
+  display: block;
+}
+
+#profile-image {
+  height: 100px;
+  width: 100px;
+}
+
+.user-input {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.add-button {
+  height: 30px;
+  width: 30px;
+}

@@ -1,0 +1,22 @@
+html {
+  min-width: 320px;
+}
+
+body {
+  color: $primary-text-color;
+  background-color: $lighter-background-color;
+  margin-right: 15px;
+}
+
+#login-screen, #home-screen, #user-profile, #social-media-layover, #add-new-contact, #contact-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0;
+}

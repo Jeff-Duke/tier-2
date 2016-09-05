@@ -1,0 +1,40 @@
+// ***** HOME SCREEN *****
+@media (min-width: 320px) {
+
+  #home-screen-icon-layout {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .icon {
+    height: 100px;
+    width: 100px;
+    margin-top: 15px;
+  }
+
+  .home-screen-icons {
+    padding: 0 20px 0 20px;
+    text-align: center;
+  }
+
+  #home-screen-footer, #footer-with-profile {
+    width: 90vw;
+  }
+
+  #home-screen-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    justify-content: center;
+    position: relative;
+    top: 50px;
+  }
+
+  .footer-buttons {
+    height: 50px;
+    width: 50px;
+  }
+}
