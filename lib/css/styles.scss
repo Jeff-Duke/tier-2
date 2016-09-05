@@ -4,7 +4,7 @@ body {
   color: $primary-text-color;
 }
 
-#login-screen, #home-screen {
+#login-screen, #home-screen, #user-profile, #social-media-layover, #add-new-contact, #contact-list {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ h1 {
   margin: 0;
 }
 
+// ***** LOGIN SCREEN *****
 .logo {
   height: 100px;
   width: 100px;
@@ -41,7 +42,70 @@ h1 {
   background: url('/img/google.png') no-repeat;
 }
 
-.exchange-icon, .profile-placeholder-icon, .add-contact-icon, .contact-list-icon {
+// ***** HOME SCREEN *****
+#home-screen-icon-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon {
   height: 100px;
+  width: 100px;
+}
+
+.home-screen-icons {
+  padding: 0 20px 0 20px;
+  text-align: center;
+}
+
+#home-screen-footer, #footer-with-profile {
+  width: 320px;
+}
+
+.footer-buttons {
+  height: 40px;
+  padding: 10px;
+  width: 40px;
+}
+
+// ***** USER PROFILE *****
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  width: 320px;
+}
+
+form input {
+  display: block;
+}
+
+#profile-image {
+  height: 100px;
+  width: 100px;
+}
+
+.user-input {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.add-button {
+  height: 30px;
+  width: 30px;
+}
+
+// ***** SOCIAL MEDIA LAYOVER *****
+#social-media-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 320px;
+}
+
+.social-icons {
+  height: 100px;
+  padding: 20px;
   width: 100px;
 }
