@@ -3,15 +3,19 @@
     .logo {
         height: 100px;
         width: 100px;
-        margin-bottom: 60px;
     }
 
     .login {
         height: 60px;
         margin-top: 20px;
-        width: 100vw;
     }
-    
+
+    .facebook-login, .twitter-login, .google-login {
+        border: none;
+        width: 300px;
+        margin-left: 15px;
+    }
+
     .facebook-login {
         background: url('/img/facebook.png') no-repeat;
     }
