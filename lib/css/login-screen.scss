@@ -1,30 +1,44 @@
 // ***** LOGIN SCREEN *****
 @media (min-width: 320px) {
     .logo {
-        height: 100px;
-        width: 100px;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 40px;
+    }
+
+    .login-buttons {
+      background-color: #FFF;
+      border-radius: 5px;
+      height: 260px;
+      width: 315px;
     }
 
     .login {
-        height: 60px;
-        margin-top: 20px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 5px #888888;
+      height: 60px;
+      margin-top: 20px;
+      outline: none;
+        &:hover {
+          cursor: pointer;
+        }
     }
 
     .facebook-login, .twitter-login, .google-login {
-        border: none;
-        width: 300px;
-        margin-left: 15px;
+      border: none;
+      width: 300px;
+      margin-left: 8px;
     }
 
     .facebook-login {
-        background: url('/img/facebook.png') no-repeat;
+      background: url('/img/facebook.png') no-repeat;
     }
 
     .twitter-login {
-        background: url('/img/twitter.png') no-repeat;
+      background: url('/img/twitter.png') no-repeat;
     }
 
     .google-login {
-        background: url('/img/google.png') no-repeat;
+      background: url('/img/google.png') no-repeat;
     }
 }
