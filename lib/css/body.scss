@@ -4,7 +4,6 @@ html {
 
 body {
   color: $primary-text-color;
-  background-color: $lighter-background-color;
 }
 
 #login-screen, #home-screen, #user-profile, #social-media-layover, #add-new-contact, #contact-list {
@@ -15,11 +14,6 @@ body {
   height: 100vh;
 }
 
-#login-screen {
-  background: url('/img/login-background.png') no-repeat;
-  background-size: cover;
-}
-
 h1 {
   font-family: 'Limelight', serif;
   font-size: 40px;
@@ -27,6 +21,6 @@ h1 {
   padding: 10px;
 }
 
-p{
+p {
   font-family: 'Roboto', sans-serif;
 }
