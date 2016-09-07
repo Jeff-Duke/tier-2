@@ -41,5 +41,9 @@
     "webdriverio": "^4.2.11",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
+  },
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
   }
 }
