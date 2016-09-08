@@ -1,18 +1,36 @@
 {
+  "predef": [
+    "document",
+    "window",
+    "-Promise"
+  ],
   "browser": true,
-  /*"jquery": true,*/
-  "node": true,
-  "esversion": 6,
-  "camelcase": true,
+  "boss": true,
+  "curly": true,
+  "debug": false,
+  "devel": true,
   "eqeqeq": true,
-  "indent": 2,
-  "latedef": true,
-  "maxlen": 100,
+  "esnext": true,
+  "evil": true,
+  "forin": false,
+  "immed": false,
+  "laxbreak": false,
+  "moz": true,
   "newcap": true,
-  "quotmark": "single",
-  /*"strict": true,*/
-  /*"undef": true,*/
-  "unused": true,
+  "noarg": true,
+  "node": true,
+  "noempty": false,
+  "nonew": false,
+  "nomen": false,
+  "onevar": false,
+  "plusplus": false,
+  "regexp": false,
+  "undef": true,
+  "sub": true,
+  "strict": false,
+  "white": false,
   "eqnull": true,
-  "nonbsp": true
+  "esnext": true,
+  "unused": true,
+  "mocha": true
 }
