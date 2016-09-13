@@ -1,46 +1,27 @@
 @media screen and (min-width: 320px) {
-    .logo {
-      height: 100px;
-      width: 100px;
-      margin-bottom: 40px;
-    }
 
-    .login-fields {
-      background-color: #FFF;
-      border-radius: 5px;
-      height: 260px;
-      width: 315px;
-    }
+  h1 {
+    font-family: 'Chonburi', serif;
+    font-size: 36px;
+    margin: 80px 0;
+  }
 
-    #username,
-    #password {
-      @include login-field-size;
-      border: none;
-      border: 1px solid #ede8e6;
-      border-radius: 5px;
-      font-size: 16px;
-      outline: none;
-      text-indent: 10px;
-    }
+  .SignIn {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    #sign-in {
-      @include login-field-size;
-      font-size: 20px;
-      &:hover {
-        cursor: pointer;
-      }
+  .googleLogin {
+    background: url('/img/google.png') no-repeat;
+    border-radius: 5px;
+    height: 60px;
+    outline: none;
+    width: 300px;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 3px 3px 3px #8f8d8d;
     }
-
-    .googleLogin {
-      background: url('/img/google.png') no-repeat;
-      width: 300px;
-      margin-left: 8px;
-      border-radius: 5px;
-      height: 60px;
-      margin-top: 20px;
-      outline: none;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+  }
 }

@@ -1,0 +1,25 @@
+@media screen and (min-width: 320px) {
+
+  .CreateContact {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
+
+  input[type=text],
+  [type=email] {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .Notes {
+    font-size: 16px;
+    outline: none;
+    margin: 5px 0;
+  }
+
+  // .react-toggle.react-toggle--unchecked,
+  .react-toggle.react-toggle--checked {
+    display: inline-block;
+  }
+}

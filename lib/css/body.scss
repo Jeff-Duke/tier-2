@@ -2,24 +2,13 @@ html {
   min-width: 320px;
 }
 
-body {
-  color: $primary-text-color;
-}
-
-#login-screen, #home-screen, #user-profile, #social-media-layover, #add-new-contact, #contact-list {
+.ApplicationLoggedIn {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
 }
-
-// h1 {
-//   font-family: 'Limelight', serif;
-//   font-size: 40px;
-//   margin: 0;
-//   padding: 10px;
-// }
 
 p {
   font-family: 'Roboto', sans-serif;
