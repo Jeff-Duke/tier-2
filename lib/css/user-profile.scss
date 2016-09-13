@@ -1,26 +1,16 @@
-.profile-header {
-  display: flex;
-  flex-direction: row;
-  width: 320px;
-}
+@media screen and (min-width: 320px) {
 
-form input {
-  display: block;
-}
+  .UserInfo {
+    width: 320px;
+  }
 
-.user-input {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-}
+  .ProfileImage {
+    float: left;
+  }
 
-.add-button {
-  height: 30px;
-  width: 30px;
-}
-
-.ProfileImage {
-  border-radius: 100%;
-  height: 100px;
-  width: 100px;
+  .ProfileImage {
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+  }
 }
