@@ -15,7 +15,19 @@
   }
 
   .SortButton {
-    margin: auto;
+    background-color: #009588;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#009588, 10%);
+    }
+  }
+
+  span {
+    color: #26292b;
+    font-weight: bold;
   }
 
 }
