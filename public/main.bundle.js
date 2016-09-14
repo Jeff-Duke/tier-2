@@ -21484,6 +21484,14 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
+	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError("Cannot call a class as a function");
@@ -21528,12 +21536,20 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+	
 	      var user = this.state.user;
 	
 	      if (user) {
-	        return _react2.default.createElement('div', { className: 'ApplicationLoggedIn' }, _react2.default.createElement(_UserInfo2.default, { user: user }), _react2.default.createElement('button', { className: 'signOut', onClick: function onClick() {
+	        return _react2.default.createElement('div', { className: 'ApplicationLoggedIn' }, _react2.default.createElement(_UserInfo2.default, { user: user }), _react2.default.createElement('button', _defineProperty({
+	          className: 'SignOut',
+	          onClick: function onClick() {
 	            return _firebase2.default.auth().signOut();
-	          } }, 'Sign Out'), _react2.default.createElement(_ContactList2.default, { uid: user.uid }), _react2.default.createElement(_CreateContact2.default, null));
+	          },
+	          children: 'Sign Out'
+	        }, 'onClick', function onClick() {
+	          return _this3.setState({ user: null });
+	        })), _react2.default.createElement(_ContactList2.default, { uid: user.uid }), _react2.default.createElement(_CreateContact2.default, null));
 	      }
 	      return _react2.default.createElement('div', { className: 'ApplicationNotLoggedIn' }, _react2.default.createElement(_SignIn2.default, null));
 	    }
@@ -21641,11 +21657,11 @@
 	exports.default = function (_ref) {
 	  var user = _ref.user;
 	
-	  return _react2.default.createElement('section', { className: 'UserInfo' }, _react2.default.createElement('img', {
+	  return _react2.default.createElement('section', { className: 'UserInfo' }, _react2.default.createElement('div', { className: 'UserInfoDisplayName' }, ' ', user.displayName), _react2.default.createElement('img', {
 	    className: 'ProfileImage',
 	    src: user.photoURL,
 	    alt: user.displayName + ' Photograph'
-	  }), _react2.default.createElement('div', { className: 'UserInfoDisplayName' }, ' ', user.displayName));
+	  }));
 	};
 	
 	var _react = __webpack_require__(1);
@@ -21774,11 +21790,6 @@
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
 	      this.reference.off();
-	    }
-	  }, {
-	    key: 'handleDeselect',
-	    value: function handleDeselect() {
-	      this.setState({ selectedContact: null });
 	    }
 	  }, {
 	    key: 'render',
@@ -22403,7 +22414,7 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      return _react2.default.createElement('div', { key: this.props.contact.key, className: 'FullContactCard' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', this.props.contact.contactName), _react2.default.createElement('li', null, 'Company: ', this.props.contact.companyName), _react2.default.createElement('li', null, 'Primary Phone: ', this.props.contact.primaryPhone), _react2.default.createElement('li', null, 'Secondary Phone:', this.props.contact.secondaryPhone), _react2.default.createElement('li', null, 'Primary Email: ', this.props.contact.primaryEmail), _react2.default.createElement('li', null, 'Secondary Email: ', this.props.contact.secondaryEmail), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('a', { target: '_blank', href: this.props.contact.primarySocial }, this.props.contact.primarySocial)), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('a', { target: '_blank', href: this.props.contact.secondarySocial }, this.props.contact.secondarySocial)), _react2.default.createElement('li', null, this.props.contact.followup), _react2.default.createElement('li', null, 'Notes: ', this.props.contact.notes)), _react2.default.createElement('button', { onClick: function onClick() {
+	      return _react2.default.createElement('div', { key: this.props.contact.key, className: 'FullContactCard' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', null, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', null, this.props.contact.companyName)), _react2.default.createElement('li', null, 'Primary Phone: ', _react2.default.createElement('span', null, this.props.contact.primaryPhone)), _react2.default.createElement('li', null, 'Secondary Phone:', _react2.default.createElement('span', null, this.props.contact.secondaryPhone)), _react2.default.createElement('li', null, 'Primary Email: ', _react2.default.createElement('span', { className: 'email' }, this.props.contact.primaryEmail)), _react2.default.createElement('li', null, 'Secondary Email: ', _react2.default.createElement('span', { className: 'email' }, this.props.contact.secondaryEmail)), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', null, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.primarySocial }, this.props.contact.primarySocial))), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', null, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.secondarySocial }, this.props.contact.secondarySocial))), _react2.default.createElement('li', null, this.props.contact.followup), _react2.default.createElement('li', null, 'Notes: ', this.props.contact.notes)), _react2.default.createElement('button', { onClick: function onClick() {
 	          return _this2.props.handleDeselect();
 	        } }, 'Collapse'), _react2.default.createElement('button', { onClick: function onClick() {
 	          return _this2.props.reference.remove();
@@ -22488,9 +22499,9 @@
 	
 	      return _react2.default.createElement('div', { className: 'MiniContactCard', onClick: function onClick() {
 	          return _this2.props.handleClick();
-	        }, key: this.props.contact.key }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', this.props.contact.contactName), _react2.default.createElement('li', null, 'Company: ', this.props.contact.companyName), _react2.default.createElement('li', null, this.props.contact.followup)), _react2.default.createElement('button', { className: 'ExpandContact', onClick: function onClick() {
+	        }, key: this.props.contact.key }, _react2.default.createElement('img', { className: 'ProfilePlaceholder', src: '/img/profile-image-placeholder.svg', alt: 'profile placeholder' }), _react2.default.createElement('article', { className: 'ContactCardInfo' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', null, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', null, this.props.contact.companyName)), _react2.default.createElement('li', null, _react2.default.createElement('span', null, this.props.contact.followup))), _react2.default.createElement('button', { className: 'ExpandContact', onClick: function onClick() {
 	          return _this2.props.handleClick();
-	        } }, '+'));
+	        } }, '+')));
 	    }
 	  }]);
 	
@@ -22571,7 +22582,7 @@
 	
 	
 	// module
-	exports.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  min-width: 320px; }\n\n.ApplicationLoggedIn {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center; }\n\nli, p {\n  font-family: 'Roboto', sans-serif; }\n\n@media screen and (min-width: 320px) {\n  h1 {\n    font-family: 'Chonburi', serif;\n    font-size: 36px;\n    margin: 80px 0; }\n  .SignIn {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; }\n  .googleLogin {\n    background: url(\"/img/google.png\") no-repeat;\n    border-radius: 5px;\n    height: 60px;\n    outline: none;\n    width: 300px; }\n    .googleLogin:hover {\n      cursor: pointer;\n      box-shadow: 3px 3px 3px #8f8d8d; } }\n\n@media screen and (min-width: 320px) {\n  .UserInfo {\n    width: 320px; }\n  .ProfileImage {\n    float: left; }\n  .ProfileImage {\n    border-radius: 100%;\n    height: 60px;\n    width: 60px; } }\n\n@media screen and (min-width: 320px) {\n  .CreateContact {\n    display: flex;\n    flex-direction: column;\n    width: 250px; }\n  input[type=text],\n  [type=email] {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0; }\n  .Notes {\n    border-color: #bec0c1;\n    font-size: 16px;\n    outline: none;\n    margin: 5px 0;\n    resize: none; }\n  label {\n    margin: 5px 0; } }\n\n@media screen and (min-width: 320px) {\n  .MiniContactCard {\n    background-color: #bec0c1;\n    height: 55px;\n    line-height: 1.2em;\n    margin: 10px;\n    padding: 10px;\n    width: 230px; }\n  .DeleteContact {\n    margin-top: 5px; } }\n\n@media screen and (min-width: 320px) {\n  .FullContactCard {\n    margin: 20px 0;\n    background-color: #bec0c1;\n    height: 240px;\n    line-height: 1.5em;\n    margin: 10px;\n    padding: 10px;\n    width: 230px; }\n  .DeleteContact {\n    margin-top: 5px; }\n  .SortButton {\n    margin: auto; } }\n\n.react-toggle {\n  display: inline-block;\n  position: relative;\n  cursor: pointer;\n  background-color: transparent;\n  border: 0;\n  padding: 0;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-tap-highlight-color: transparent; }\n\n.react-toggle-track-check, .react-toggle-track-x {\n  display: none; }\n", ""]);
+	exports.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  min-width: 320px; }\n\nbody {\n  background-color: #f9f5ef; }\n\n.ApplicationLoggedIn {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center; }\n\nli, p {\n  font-family: 'Roboto', sans-serif; }\n\n@media screen and (min-width: 320px) {\n  h1 {\n    font-family: 'Chonburi', serif;\n    font-size: 36px;\n    margin: 80px 0; }\n  .SignIn {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; }\n  .googleLogin {\n    background: url(\"/img/google.png\") no-repeat;\n    border-radius: 5px;\n    height: 60px;\n    outline: none;\n    width: 300px; }\n    .googleLogin:hover {\n      cursor: pointer;\n      box-shadow: 3px 3px 3px #8f8d8d; } }\n\n@media screen and (min-width: 320px) {\n  .CreateContact {\n    display: flex;\n    flex-direction: column;\n    width: 250px; }\n  input[type=text],\n  [type=email] {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0;\n    text-indent: 5px; }\n  .Notes {\n    border-color: #bec0c1;\n    font-size: 16px;\n    outline: none;\n    margin: 5px 0;\n    resize: none;\n    text-indent: 5px; }\n  label {\n    margin: 5px 0; }\n  li {\n    color: #5e5d61; } }\n\n@media screen and (min-width: 320px) {\n  .MiniContactCard {\n    background-color: #bec0c1;\n    height: 55px;\n    line-height: 1.2em;\n    margin: 10px;\n    padding: 10px;\n    width: 230px; }\n  .ContactCardInfo {\n    float: left;\n    padding-left: 15x;\n    overflow-wrap: break-word;\n    word-break: break-all; }\n  .ProfilePlaceholder {\n    float: right;\n    height: 60px;\n    width: 60px; }\n  .ExpandContact {\n    background-color: #f9f5ef;\n    border: none;\n    border-radius: 3px; }\n    .ExpandContact:hover {\n      cursor: pointer;\n      background-color: #e4d2b7; } }\n\n@media screen and (min-width: 320px) {\n  .FullContactCard {\n    margin: 20px 0;\n    background-color: #bec0c1;\n    height: 240px;\n    line-height: 1.5em;\n    margin: 10px;\n    padding: 10px;\n    width: 230px; }\n  .DeleteContact {\n    margin-top: 5px; }\n  .SortButton {\n    background-color: #009588;\n    border: none;\n    border-radius: 5px;\n    color: #fff; }\n    .SortButton:hover {\n      cursor: pointer;\n      background-color: #006259; }\n  span {\n    color: #26292b;\n    font-weight: bold; } }\n\n.react-toggle {\n  display: inline-block;\n  position: relative;\n  cursor: pointer;\n  background-color: transparent;\n  border: 0;\n  padding: 0;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-tap-highlight-color: transparent; }\n\n.react-toggle-track-check, .react-toggle-track-x {\n  display: none; }\n\n@media screen and (min-width: 320px) {\n  .UserInfo {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: space-around; }\n  .UserInfoDisplayName {\n    display: flex;\n    flex-wrap: wrap;\n    font-family: 'Roboto', sans-serif;\n    align-items: flex-end;\n    justify-content: space-around;\n    font-size: 2em;\n    margin-left: 50px; }\n  .ProfileImage {\n    border-radius: 100%;\n    height: 60px;\n    width: 60px; } }\n", ""]);
 	
 	// exports
 

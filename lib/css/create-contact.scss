@@ -23,6 +23,20 @@
     text-indent: 5px;
   }
 
+  .CreateContactButton {
+    background-color: #009588;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.2em;
+    height: 45px;
+    min-width: 250px;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#009588, 10%);
+    }
+  }
+
   label {
     margin: 5px 0;
   }
