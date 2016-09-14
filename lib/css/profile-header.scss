@@ -6,4 +6,15 @@
     justify-content: center;
     width: 320px;
   }
+
+  .SignOut {
+    background-color: #009588;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten(#009588, 10%);
+    }
+  }
 }

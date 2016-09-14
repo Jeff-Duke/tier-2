@@ -9,8 +9,26 @@
     width: 230px;
   }
 
-  .DeleteContact {
-    margin-top: 5px;
+  .ContactCardInfo {
+    float: left;
+    padding-left: 15x;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
 
+  .ProfilePlaceholder {
+    float: right;
+    height: 60px;
+    width: 60px;
+  }
+
+  .ExpandContact {
+    background-color: #f9f5ef;
+    border: none;
+    border-radius: 3px;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#f9f5ef, 15%);
+    }
+  }
 }
