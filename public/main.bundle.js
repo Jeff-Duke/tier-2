@@ -21786,7 +21786,6 @@
 	      var _this3 = this;
 	
 	      var arrayOfContacts = this.state.contacts;
-	
 	      if (this.state.followupList) {
 	        arrayOfContacts = this.state.contacts.filter(function (contact) {
 	          return contact.followup === true;
@@ -22405,10 +22404,10 @@
 	      var _this2 = this;
 	
 	      return _react2.default.createElement('div', { key: this.props.contact.key, className: 'FullContactCard' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', this.props.contact.contactName), _react2.default.createElement('li', null, 'Company: ', this.props.contact.companyName), _react2.default.createElement('li', null, 'Primary Phone: ', this.props.contact.primaryPhone), _react2.default.createElement('li', null, 'Secondary Phone:', this.props.contact.secondaryPhone), _react2.default.createElement('li', null, 'Primary Email: ', this.props.contact.primaryEmail), _react2.default.createElement('li', null, 'Secondary Email: ', this.props.contact.secondaryEmail), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('a', { target: '_blank', href: this.props.contact.primarySocial }, this.props.contact.primarySocial)), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('a', { target: '_blank', href: this.props.contact.secondarySocial }, this.props.contact.secondarySocial)), _react2.default.createElement('li', null, this.props.contact.followup), _react2.default.createElement('li', null, 'Notes: ', this.props.contact.notes)), _react2.default.createElement('button', { onClick: function onClick() {
-	          return _this2.props.reference.remove();
-	        } }, 'Delete'), _react2.default.createElement('button', { onClick: function onClick() {
 	          return _this2.props.handleDeselect();
-	        } }, 'Back'));
+	        } }, 'Collapse'), _react2.default.createElement('button', { onClick: function onClick() {
+	          return _this2.props.reference.remove();
+	        } }, 'Delete'));
 	    }
 	  }]);
 	
@@ -22479,10 +22478,7 @@
 	  function MiniContact(props) {
 	    _classCallCheck(this, MiniContact);
 	
-	    var _this = _possibleConstructorReturn(this, (MiniContact.__proto__ || Object.getPrototypeOf(MiniContact)).call(this));
-	
-	    _this.state = {};
-	    return _this;
+	    return _possibleConstructorReturn(this, (MiniContact.__proto__ || Object.getPrototypeOf(MiniContact)).call(this));
 	  }
 	
 	  _createClass(MiniContact, [{
@@ -22492,9 +22488,9 @@
 	
 	      return _react2.default.createElement('div', { className: 'MiniContactCard', onClick: function onClick() {
 	          return _this2.props.handleClick();
-	        }, key: this.props.contact.key }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', this.props.contact.contactName), _react2.default.createElement('li', null, 'Company: ', this.props.contact.companyName), _react2.default.createElement('li', null, this.props.contact.followup)), _react2.default.createElement('button', { className: 'DeleteContact', onClick: function onClick() {
-	          return _this2.props.reference.remove();
-	        } }, 'Delete'));
+	        }, key: this.props.contact.key }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', this.props.contact.contactName), _react2.default.createElement('li', null, 'Company: ', this.props.contact.companyName), _react2.default.createElement('li', null, this.props.contact.followup)), _react2.default.createElement('button', { className: 'ExpandContact', onClick: function onClick() {
+	          return _this2.props.handleClick();
+	        } }, '+'));
 	    }
 	  }]);
 	
