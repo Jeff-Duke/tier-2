@@ -16,6 +16,17 @@ module.exports = {
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.scss$/, loader: 'style!css!sass' },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015' },
+      { test: /\.jpg$/, loader: "file-loader?name=[path][name].[ext]" },
+     {
+         test: /\.svg$/,
+         loader: 'url-loader',
+         query: { mimetype: 'image/svg' }
+     },
+     {
+         test: /\.png$/,
+         loader: 'url-loader',
+         query: { mimetype: 'image/png' }
+     },
       { test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
