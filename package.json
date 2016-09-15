@@ -36,6 +36,7 @@
     "jquery": "^3.1.0",
     "jsdom": "^9.5.0",
     "locus": "^1.2.0",
+    "md5": "^2.2.1",
     "mocha": "^3.0.2",
     "mocha-loader": "^0.7.1",
     "node-sass": "^3.8.0",
@@ -44,6 +45,8 @@
     "sass-loader": "^4.0.1",
     "selenium-standalone": "^5.6.3",
     "style-loader": "^0.13.1",
+    "svg-url-loader": "^1.1.0",
+    "url-loader": "^0.5.7",
     "wdio-dot-reporter": "0.0.6",
     "wdio-mocha-framework": "^0.4.0",
     "wdio-selenium-standalone-service": "0.0.6",
@@ -54,11 +57,14 @@
   "dependencies": {
     "babel": "^6.5.2",
     "babel-polyfill": "^6.13.0",
+    "js-md5": "^0.4.1",
     "lodash": "^4.15.0",
+    "md5": "^2.2.1",
     "node-libs-browser": "^1.0.0",
     "object.entries": "^1.0.3",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "react-gravatar-image": "^1.0.2",
     "split-object": "^2.1.1"
   }
 }
