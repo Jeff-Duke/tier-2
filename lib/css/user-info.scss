@@ -1,0 +1,42 @@
+@media screen and (min-width: 320px) {
+  .UserInfo {
+    padding: 5px;
+    min-width: 250px;
+    max-width: 260px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-bottom: 5px;
+  }
+  .UserInfoDisplayName {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Roboto', sans-serif;
+    justify-content: space-around;
+    align-items: flex-end;
+    font-size: 2em;
+    padding: 5px;
+  }
+
+  .ProfileImage {
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+  }
+
+  .SignOut {
+    background-color: #009588;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    height: 45px;
+    width: 250px;
+    margin: 10px 0;
+    font-size: 1.2em;
+    &:hover {
+      cursor: pointer;
+      background-color: lighten(#009588, 10%);
+    }
+  }
+}

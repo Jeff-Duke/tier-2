@@ -1,12 +1,17 @@
 @media screen and (min-width: 320px) {
 
   .MiniContactCard {
+    box-shadow: 0 2px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
     background-color: #bec0c1;
-    height: 55px;
+    min-height: 75px;
     line-height: 1.2em;
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
     width: 230px;
+      li {
+        max-width: 150px;
+        margin-bottom: 5px;
+      }
   }
 
   .ContactCardInfo {
@@ -23,12 +28,17 @@
   }
 
   .ExpandContact {
-    background-color: #f9f5ef;
+    background-color: #009588;
+    color: #fff;
     border: none;
+    font-size: 1.2em;
     border-radius: 3px;
+    height: 45px;
+    width : 45px;
     &:hover {
       cursor: pointer;
-      background-color: darken(#f9f5ef, 15%);
+      background-color: #FFEBCD;
+      color: #000;
     }
   }
 }
