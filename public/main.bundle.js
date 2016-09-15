@@ -60,7 +60,7 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 	
-	__webpack_require__(190);
+	__webpack_require__(194);
 	
 	(0, _reactDom.render)(_react2.default.createElement(_Application2.default, null), document.getElementById('application'));
 
@@ -21484,14 +21484,6 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 	
-	function _defineProperty(obj, key, value) {
-	  if (key in obj) {
-	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-	  } else {
-	    obj[key] = value;
-	  }return obj;
-	}
-	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError("Cannot call a class as a function");
@@ -21534,6 +21526,12 @@
 	      });
 	    }
 	  }, {
+	    key: 'triggerSignOut',
+	    value: function triggerSignOut() {
+	      _firebase2.default.auth().signOut();
+	      this.setState({ user: null });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
@@ -21541,17 +21539,15 @@
 	      var user = this.state.user;
 	
 	      if (user) {
-	        return _react2.default.createElement('div', { className: 'ApplicationLoggedIn' }, _react2.default.createElement(_UserInfo2.default, { user: user }), _react2.default.createElement('button', _defineProperty({
+	        return _react2.default.createElement('div', { className: 'ApplicationLoggedIn', role: 'application' }, _react2.default.createElement(_UserInfo2.default, { user: user }), _react2.default.createElement('button', {
 	          className: 'SignOut',
 	          onClick: function onClick() {
-	            return _firebase2.default.auth().signOut();
+	            return _this3.triggerSignOut();
 	          },
 	          children: 'Sign Out'
-	        }, 'onClick', function onClick() {
-	          return _this3.setState({ user: null });
-	        })), _react2.default.createElement(_ContactList2.default, { uid: user.uid }), _react2.default.createElement(_CreateContact2.default, null));
+	        }), _react2.default.createElement(_ContactList2.default, { uid: user.uid }), _react2.default.createElement(_CreateContact2.default, null));
 	      }
-	      return _react2.default.createElement('div', { className: 'ApplicationNotLoggedIn' }, _react2.default.createElement(_SignIn2.default, null));
+	      return _react2.default.createElement('div', { className: 'ApplicationNotLoggedIn', role: 'link' }, _react2.default.createElement(_SignIn2.default, null));
 	    }
 	  }]);
 	
@@ -21657,7 +21653,7 @@
 	exports.default = function (_ref) {
 	  var user = _ref.user;
 	
-	  return _react2.default.createElement('section', { className: 'UserInfo' }, _react2.default.createElement('div', { className: 'UserInfoDisplayName' }, ' ', user.displayName), _react2.default.createElement('div', null, _react2.default.createElement('img', {
+	  return _react2.default.createElement('section', { className: 'UserInfo' }, _react2.default.createElement('div', { className: 'UserInfoDisplayName', role: 'complementary' }, ' ', user.displayName), _react2.default.createElement('div', { role: 'complementary' }, _react2.default.createElement('img', {
 	    className: 'ProfileImage',
 	    src: user.photoURL,
 	    alt: user.displayName + ' Photograph'
@@ -21744,7 +21740,7 @@
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
-	var split = __webpack_require__(189);
+	var split = __webpack_require__(193);
 	
 	var ContactList = function (_Component) {
 	  _inherits(ContactList, _Component);
@@ -21767,11 +21763,6 @@
 	    key: 'toggleFollowUp',
 	    value: function toggleFollowUp() {
 	      this.state.followupList === false ? this.setState({ followupList: true, followupButton: 'Show All Contacts' }) : this.setState({ followupList: false, followupButton: 'Sort By Follow-up' });
-	    }
-	  }, {
-	    key: 'toggleFlaggedForFollowUp',
-	    value: function toggleFlaggedForFollowUp(e) {
-	      var contactClicked = e;
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -21812,9 +21803,6 @@
 	        if (_this3.state.selectedContact === contact) {
 	
 	          return _react2.default.createElement(_Contact2.default, { contact: contact,
-	            handleFollowupToggle: function handleFollowupToggle() {
-	              return _this3.toggleFlaggedForFollowUp();
-	            },
 	            handleDeselect: function handleDeselect() {
 	              return _this3.setState({ selectedContact: null });
 	            },
@@ -21832,11 +21820,12 @@
 	      });
 	
 	      var contacts = returnedContacts;
-	      return _react2.default.createElement('div', { className: 'renderContact' }, _react2.default.createElement('button', { className: 'SortButton',
+	      return _react2.default.createElement('div', { className: 'renderContact', role: 'listbox', 'aria-expanded': 'false' }, _react2.default.createElement('button', { className: 'SortButton',
 	        children: this.state.followupButton,
 	        onClick: function onClick() {
 	          return _this3.toggleFollowUp();
-	        }
+	        },
+	        role: 'option'
 	      }), contacts);
 	    }
 	  }, {
@@ -21980,14 +21969,15 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      return _react2.default.createElement('form', { className: 'CreateContact', onSubmit: this.createContact.bind(this) }, _react2.default.createElement('input', {
+	      return _react2.default.createElement('form', { className: 'CreateContact', onSubmit: this.createContact.bind(this) }, _react2.default.createElement('input', { className: 'ContactName',
 	        placeholder: 'First & Last Name',
 	        name: 'contactName',
 	        type: 'text',
 	        value: this.state.contactName,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'First & Last Name'
 	      }), _react2.default.createElement('input', { className: 'CompanyName',
 	        placeholder: 'Company Name',
 	        name: 'companyName',
@@ -21995,23 +21985,26 @@
 	        value: this.state.companyName,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Company Name'
 	      }), _react2.default.createElement('input', { className: 'PrimaryPhone',
 	        placeholder: 'Primary Phone',
 	        name: 'primaryPhone',
-	        type: 'text',
+	        type: 'tel',
 	        value: this.state.primaryPhone,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Primary Phone'
 	      }), _react2.default.createElement('input', { className: 'SecondaryPhone',
 	        placeholder: 'Secondary Phone',
 	        name: 'secondaryPhone',
-	        type: 'text',
+	        type: 'tel',
 	        value: this.state.secondaryPhone,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Secondary Phone'
 	      }), _react2.default.createElement('input', { className: 'PrimaryEmail',
 	        placeholder: 'Primary Email',
 	        name: 'primaryEmail',
@@ -22019,15 +22012,17 @@
 	        value: this.state.primaryEmail,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Primary Email'
 	      }), _react2.default.createElement('input', { className: 'SecondaryEmail',
 	        placeholder: 'Secondary Email',
 	        name: 'secondaryEmail',
-	        type: 'text',
+	        type: 'email',
 	        value: this.state.secondaryEmail,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Secondary Email'
 	      }), _react2.default.createElement('input', { className: 'PrimarySocial',
 	        placeholder: 'Primary Social Media URL',
 	        name: 'primarySocial',
@@ -22035,7 +22030,8 @@
 	        value: this.state.primarySocial,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Primary Social Media URL'
 	      }), _react2.default.createElement('input', { className: 'SecondarySocial',
 	        placeholder: 'Secondary Social Media URL',
 	        name: 'secondarySocial',
@@ -22043,7 +22039,8 @@
 	        value: this.state.secondarySocial,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
+	        },
+	        'aria-label': 'Secondary Social Media URL'
 	      }), _react2.default.createElement('textarea', { className: 'Notes',
 	        placeholder: 'Notes',
 	        name: 'notes',
@@ -22054,14 +22051,18 @@
 	        value: this.state.notes,
 	        onChange: function onChange(e) {
 	          return _this2.updateProperties(e);
-	        }
-	      }), _react2.default.createElement('label', { className: 'react-toggle-label' }, _react2.default.createElement(_reactToggle2.default, {
+	        },
+	        'aria-label': 'Notes'
+	      }), _react2.default.createElement('label', { className: 'react-toggle-label', role: 'checkbox', 'aria-checked': 'true' }, _react2.default.createElement(_reactToggle2.default, {
 	        className: 'FollowupCheckbox',
 	        checked: this.state.followup,
 	        onChange: function onChange(e) {
 	          return _this2.updateFollowupChecked(e);
 	        }
-	      }), 'Flag for Follow-up'), _react2.default.createElement('input', { className: 'CreateContactButton', type: 'submit', value: 'Create Contact' }));
+	      }), 'Flag for Follow-up'), _react2.default.createElement('input', { className: 'CreateContactButton',
+	        type: 'submit',
+	        value: 'Create Contact'
+	      }));
 	    }
 	  }]);
 	
@@ -22431,14 +22432,15 @@
 	  }
 	
 	  _createClass(FullContact, [{
-	    key: 'updateFollowupChecked',
-	    value: function updateFollowupChecked() {
+	    key: 'updateFollowup',
+	    value: function updateFollowup() {
+	      var reference = this.props.reference;
 	      if (this.state.followup === false) {
 	        this.setState({ followup: true });
-	        this.props.contact.followup = true;
+	        reference.child("followup").set(true);
 	      } else {
 	        this.setState({ followup: false });
-	        this.props.contact.followup = false;
+	        reference.child("followup").set(false);
 	      }
 	    }
 	  }, {
@@ -22446,17 +22448,18 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      return _react2.default.createElement('div', { key: this.props.contact.key, className: 'FullContactCard' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', null, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', null, this.props.contact.companyName)), _react2.default.createElement('li', null, 'Primary Phone: ', _react2.default.createElement('span', null, this.props.contact.primaryPhone)), _react2.default.createElement('li', null, 'Secondary Phone:', _react2.default.createElement('span', null, this.props.contact.secondaryPhone)), _react2.default.createElement('li', null, 'Primary Email: ', _react2.default.createElement('span', { className: 'email' }, this.props.contact.primaryEmail)), _react2.default.createElement('li', null, 'Secondary Email: ', _react2.default.createElement('span', { className: 'email' }, this.props.contact.secondaryEmail)), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', null, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.primarySocial }, this.props.contact.primarySocial))), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', null, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.secondarySocial }, this.props.contact.secondarySocial))), _react2.default.createElement('li', null, this.props.contact.followup), _react2.default.createElement('li', null, 'Notes: ', _react2.default.createElement('span', null, ' ', this.props.contact.notes, ' '), ' ')), _react2.default.createElement('label', { className: 'react-toggle-label' }, _react2.default.createElement(_reactToggle2.default, {
+	      var contactKey = this.props.contact.key;
+	      return _react2.default.createElement('div', { key: this.props.contact.key, className: 'FullContactCard', role: 'article' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.companyName)), _react2.default.createElement('li', null, 'Primary Phone: ', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.primaryPhone)), _react2.default.createElement('li', null, 'Secondary Phone:', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.secondaryPhone)), _react2.default.createElement('li', null, 'Primary Email: ', _react2.default.createElement('span', { role: 'listitem', className: 'email' }, this.props.contact.primaryEmail)), _react2.default.createElement('li', null, 'Secondary Email: ', _react2.default.createElement('span', { role: 'listitem', className: 'email' }, this.props.contact.secondaryEmail)), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', { role: 'listitem' }, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.primarySocial }, this.props.contact.primarySocial))), _react2.default.createElement('li', null, 'Social Media: ', _react2.default.createElement('span', { role: 'listitem' }, _react2.default.createElement('a', { target: '_blank', href: this.props.contact.secondarySocial }, this.props.contact.secondarySocial))), _react2.default.createElement('li', null, 'Notes: ', _react2.default.createElement('span', { role: 'listitem' }, ' ', this.props.contact.notes, ' '), ' ')), _react2.default.createElement('div', { className: 'ContactActionButtons' }, _react2.default.createElement('label', { className: 'ReactToggleContact', role: 'checkbox' }, _react2.default.createElement(_reactToggle2.default, {
 	        className: 'FollowupCheckbox',
 	        checked: this.state.followup,
 	        onChange: function onChange() {
-	          return _this2.updateFollowupChecked();
+	          return _this2.updateFollowup();
 	        }
-	      }), 'Follow-up'), _react2.default.createElement('button', { className: 'ContactButton', onClick: function onClick() {
+	      }), 'Follow-up'), _react2.default.createElement('div', null, _react2.default.createElement('button', { className: 'ContactButton', onClick: function onClick() {
 	          return _this2.props.handleDeselect();
 	        } }, '^'), _react2.default.createElement('button', { className: 'ContactButton', onClick: function onClick() {
 	          return _this2.props.reference.remove();
-	        } }, 'X'));
+	        } }, 'X'))));
 	    }
 	  }]);
 	
@@ -22499,6 +22502,10 @@
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
+	var _md = __webpack_require__(189);
+	
+	var _md2 = _interopRequireDefault(_md);
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -22527,7 +22534,11 @@
 	  function MiniContact(props) {
 	    _classCallCheck(this, MiniContact);
 	
-	    return _possibleConstructorReturn(this, (MiniContact.__proto__ || Object.getPrototypeOf(MiniContact)).call(this));
+	    var _this = _possibleConstructorReturn(this, (MiniContact.__proto__ || Object.getPrototypeOf(MiniContact)).call(this));
+	
+	    _this.state = {};
+	
+	    return _this;
 	  }
 	
 	  _createClass(MiniContact, [{
@@ -22535,21 +22546,327 @@
 	    value: function render() {
 	      var _this2 = this;
 	
+	      var hashEmail = this.props.contact.primaryEmail.toLowerCase();
+	      var profilePhoto = 'https://www.gravatar.com/avatar/' + (0, _md2.default)(hashEmail);
 	      return _react2.default.createElement('div', { className: 'MiniContactCard', onClick: function onClick() {
 	          return _this2.props.handleClick();
-	        }, key: this.props.contact.key }, _react2.default.createElement('img', { className: 'ProfilePlaceholder', src: '/img/profile-image-placeholder.svg', alt: 'profile placeholder' }), _react2.default.createElement('article', { className: 'ContactCardInfo' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', null, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', null, this.props.contact.companyName)), _react2.default.createElement('li', null, _react2.default.createElement('span', { className: 'NameSpan' }, this.props.contact.followup)))));
+	        }, key: this.props.contact.key, role: 'article' }, _react2.default.createElement('img', { className: 'ProfilePhoto', src: profilePhoto, alt: 'contact photo' }), _react2.default.createElement('article', { className: 'ContactCardInfo' }, _react2.default.createElement('ul', null, _react2.default.createElement('li', null, 'Name: ', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.contactName)), _react2.default.createElement('li', null, 'Company: ', _react2.default.createElement('span', { role: 'listitem' }, this.props.contact.companyName)), _react2.default.createElement('li', null, _react2.default.createElement('span', { className: 'NameSpan', role: 'listitem' }, this.props.contact.followup))), _react2.default.createElement('button', { className: 'ExpandContact', onClick: function onClick() {
+	          return _this2.props.handleClick();
+	        } }, 'More Info')));
 	    }
 	  }]);
 	
 	  return MiniContact;
 	}(_react.Component);
 	
-	//<button className="ExpandContact" onClick={() => this.props.handleClick()}>+</button>
-	
 	module.exports = MiniContact;
 
 /***/ },
 /* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	(function () {
+	  var crypt = __webpack_require__(190),
+	      utf8 = __webpack_require__(191).utf8,
+	      isBuffer = __webpack_require__(192),
+	      bin = __webpack_require__(191).bin,
+	
+	
+	  // The core
+	  md5 = function (message, options) {
+	    // Convert to byte array
+	    if (message.constructor == String) {
+	      if (options && options.encoding === 'binary') message = bin.stringToBytes(message);else message = utf8.stringToBytes(message);
+	    } else if (isBuffer(message)) message = Array.prototype.slice.call(message, 0);else if (!Array.isArray(message)) message = message.toString();
+	    // else, assume byte array already
+	
+	    var m = crypt.bytesToWords(message),
+	        l = message.length * 8,
+	        a = 1732584193,
+	        b = -271733879,
+	        c = -1732584194,
+	        d = 271733878;
+	
+	    // Swap endian
+	    for (var i = 0; i < m.length; i++) {
+	      m[i] = (m[i] << 8 | m[i] >>> 24) & 0x00FF00FF | (m[i] << 24 | m[i] >>> 8) & 0xFF00FF00;
+	    }
+	
+	    // Padding
+	    m[l >>> 5] |= 0x80 << l % 32;
+	    m[(l + 64 >>> 9 << 4) + 14] = l;
+	
+	    // Method shortcuts
+	    var FF = md5._ff,
+	        GG = md5._gg,
+	        HH = md5._hh,
+	        II = md5._ii;
+	
+	    for (var i = 0; i < m.length; i += 16) {
+	
+	      var aa = a,
+	          bb = b,
+	          cc = c,
+	          dd = d;
+	
+	      a = FF(a, b, c, d, m[i + 0], 7, -680876936);
+	      d = FF(d, a, b, c, m[i + 1], 12, -389564586);
+	      c = FF(c, d, a, b, m[i + 2], 17, 606105819);
+	      b = FF(b, c, d, a, m[i + 3], 22, -1044525330);
+	      a = FF(a, b, c, d, m[i + 4], 7, -176418897);
+	      d = FF(d, a, b, c, m[i + 5], 12, 1200080426);
+	      c = FF(c, d, a, b, m[i + 6], 17, -1473231341);
+	      b = FF(b, c, d, a, m[i + 7], 22, -45705983);
+	      a = FF(a, b, c, d, m[i + 8], 7, 1770035416);
+	      d = FF(d, a, b, c, m[i + 9], 12, -1958414417);
+	      c = FF(c, d, a, b, m[i + 10], 17, -42063);
+	      b = FF(b, c, d, a, m[i + 11], 22, -1990404162);
+	      a = FF(a, b, c, d, m[i + 12], 7, 1804603682);
+	      d = FF(d, a, b, c, m[i + 13], 12, -40341101);
+	      c = FF(c, d, a, b, m[i + 14], 17, -1502002290);
+	      b = FF(b, c, d, a, m[i + 15], 22, 1236535329);
+	
+	      a = GG(a, b, c, d, m[i + 1], 5, -165796510);
+	      d = GG(d, a, b, c, m[i + 6], 9, -1069501632);
+	      c = GG(c, d, a, b, m[i + 11], 14, 643717713);
+	      b = GG(b, c, d, a, m[i + 0], 20, -373897302);
+	      a = GG(a, b, c, d, m[i + 5], 5, -701558691);
+	      d = GG(d, a, b, c, m[i + 10], 9, 38016083);
+	      c = GG(c, d, a, b, m[i + 15], 14, -660478335);
+	      b = GG(b, c, d, a, m[i + 4], 20, -405537848);
+	      a = GG(a, b, c, d, m[i + 9], 5, 568446438);
+	      d = GG(d, a, b, c, m[i + 14], 9, -1019803690);
+	      c = GG(c, d, a, b, m[i + 3], 14, -187363961);
+	      b = GG(b, c, d, a, m[i + 8], 20, 1163531501);
+	      a = GG(a, b, c, d, m[i + 13], 5, -1444681467);
+	      d = GG(d, a, b, c, m[i + 2], 9, -51403784);
+	      c = GG(c, d, a, b, m[i + 7], 14, 1735328473);
+	      b = GG(b, c, d, a, m[i + 12], 20, -1926607734);
+	
+	      a = HH(a, b, c, d, m[i + 5], 4, -378558);
+	      d = HH(d, a, b, c, m[i + 8], 11, -2022574463);
+	      c = HH(c, d, a, b, m[i + 11], 16, 1839030562);
+	      b = HH(b, c, d, a, m[i + 14], 23, -35309556);
+	      a = HH(a, b, c, d, m[i + 1], 4, -1530992060);
+	      d = HH(d, a, b, c, m[i + 4], 11, 1272893353);
+	      c = HH(c, d, a, b, m[i + 7], 16, -155497632);
+	      b = HH(b, c, d, a, m[i + 10], 23, -1094730640);
+	      a = HH(a, b, c, d, m[i + 13], 4, 681279174);
+	      d = HH(d, a, b, c, m[i + 0], 11, -358537222);
+	      c = HH(c, d, a, b, m[i + 3], 16, -722521979);
+	      b = HH(b, c, d, a, m[i + 6], 23, 76029189);
+	      a = HH(a, b, c, d, m[i + 9], 4, -640364487);
+	      d = HH(d, a, b, c, m[i + 12], 11, -421815835);
+	      c = HH(c, d, a, b, m[i + 15], 16, 530742520);
+	      b = HH(b, c, d, a, m[i + 2], 23, -995338651);
+	
+	      a = II(a, b, c, d, m[i + 0], 6, -198630844);
+	      d = II(d, a, b, c, m[i + 7], 10, 1126891415);
+	      c = II(c, d, a, b, m[i + 14], 15, -1416354905);
+	      b = II(b, c, d, a, m[i + 5], 21, -57434055);
+	      a = II(a, b, c, d, m[i + 12], 6, 1700485571);
+	      d = II(d, a, b, c, m[i + 3], 10, -1894986606);
+	      c = II(c, d, a, b, m[i + 10], 15, -1051523);
+	      b = II(b, c, d, a, m[i + 1], 21, -2054922799);
+	      a = II(a, b, c, d, m[i + 8], 6, 1873313359);
+	      d = II(d, a, b, c, m[i + 15], 10, -30611744);
+	      c = II(c, d, a, b, m[i + 6], 15, -1560198380);
+	      b = II(b, c, d, a, m[i + 13], 21, 1309151649);
+	      a = II(a, b, c, d, m[i + 4], 6, -145523070);
+	      d = II(d, a, b, c, m[i + 11], 10, -1120210379);
+	      c = II(c, d, a, b, m[i + 2], 15, 718787259);
+	      b = II(b, c, d, a, m[i + 9], 21, -343485551);
+	
+	      a = a + aa >>> 0;
+	      b = b + bb >>> 0;
+	      c = c + cc >>> 0;
+	      d = d + dd >>> 0;
+	    }
+	
+	    return crypt.endian([a, b, c, d]);
+	  };
+	
+	  // Auxiliary functions
+	  md5._ff = function (a, b, c, d, x, s, t) {
+	    var n = a + (b & c | ~b & d) + (x >>> 0) + t;
+	    return (n << s | n >>> 32 - s) + b;
+	  };
+	  md5._gg = function (a, b, c, d, x, s, t) {
+	    var n = a + (b & d | c & ~d) + (x >>> 0) + t;
+	    return (n << s | n >>> 32 - s) + b;
+	  };
+	  md5._hh = function (a, b, c, d, x, s, t) {
+	    var n = a + (b ^ c ^ d) + (x >>> 0) + t;
+	    return (n << s | n >>> 32 - s) + b;
+	  };
+	  md5._ii = function (a, b, c, d, x, s, t) {
+	    var n = a + (c ^ (b | ~d)) + (x >>> 0) + t;
+	    return (n << s | n >>> 32 - s) + b;
+	  };
+	
+	  // Package private blocksize
+	  md5._blocksize = 16;
+	  md5._digestsize = 16;
+	
+	  module.exports = function (message, options) {
+	    if (message === undefined || message === null) throw new Error('Illegal argument ' + message);
+	
+	    var digestbytes = crypt.wordsToBytes(md5(message, options));
+	    return options && options.asBytes ? digestbytes : options && options.asString ? bin.bytesToString(digestbytes) : crypt.bytesToHex(digestbytes);
+	  };
+	})();
+
+/***/ },
+/* 190 */
+/***/ function(module, exports) {
+
+	(function () {
+	  var base64map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
+	      crypt = {
+	    // Bit-wise rotation left
+	    rotl: function (n, b) {
+	      return n << b | n >>> 32 - b;
+	    },
+	
+	    // Bit-wise rotation right
+	    rotr: function (n, b) {
+	      return n << 32 - b | n >>> b;
+	    },
+	
+	    // Swap big-endian to little-endian and vice versa
+	    endian: function (n) {
+	      // If number given, swap endian
+	      if (n.constructor == Number) {
+	        return crypt.rotl(n, 8) & 0x00FF00FF | crypt.rotl(n, 24) & 0xFF00FF00;
+	      }
+	
+	      // Else, assume array and swap all items
+	      for (var i = 0; i < n.length; i++) n[i] = crypt.endian(n[i]);
+	      return n;
+	    },
+	
+	    // Generate an array of any length of random bytes
+	    randomBytes: function (n) {
+	      for (var bytes = []; n > 0; n--) bytes.push(Math.floor(Math.random() * 256));
+	      return bytes;
+	    },
+	
+	    // Convert a byte array to big-endian 32-bit words
+	    bytesToWords: function (bytes) {
+	      for (var words = [], i = 0, b = 0; i < bytes.length; i++, b += 8) words[b >>> 5] |= bytes[i] << 24 - b % 32;
+	      return words;
+	    },
+	
+	    // Convert big-endian 32-bit words to a byte array
+	    wordsToBytes: function (words) {
+	      for (var bytes = [], b = 0; b < words.length * 32; b += 8) bytes.push(words[b >>> 5] >>> 24 - b % 32 & 0xFF);
+	      return bytes;
+	    },
+	
+	    // Convert a byte array to a hex string
+	    bytesToHex: function (bytes) {
+	      for (var hex = [], i = 0; i < bytes.length; i++) {
+	        hex.push((bytes[i] >>> 4).toString(16));
+	        hex.push((bytes[i] & 0xF).toString(16));
+	      }
+	      return hex.join('');
+	    },
+	
+	    // Convert a hex string to a byte array
+	    hexToBytes: function (hex) {
+	      for (var bytes = [], c = 0; c < hex.length; c += 2) bytes.push(parseInt(hex.substr(c, 2), 16));
+	      return bytes;
+	    },
+	
+	    // Convert a byte array to a base-64 string
+	    bytesToBase64: function (bytes) {
+	      for (var base64 = [], i = 0; i < bytes.length; i += 3) {
+	        var triplet = bytes[i] << 16 | bytes[i + 1] << 8 | bytes[i + 2];
+	        for (var j = 0; j < 4; j++) if (i * 8 + j * 6 <= bytes.length * 8) base64.push(base64map.charAt(triplet >>> 6 * (3 - j) & 0x3F));else base64.push('=');
+	      }
+	      return base64.join('');
+	    },
+	
+	    // Convert a base-64 string to a byte array
+	    base64ToBytes: function (base64) {
+	      // Remove non-base-64 characters
+	      base64 = base64.replace(/[^A-Z0-9+\/]/ig, '');
+	
+	      for (var bytes = [], i = 0, imod4 = 0; i < base64.length; imod4 = ++i % 4) {
+	        if (imod4 == 0) continue;
+	        bytes.push((base64map.indexOf(base64.charAt(i - 1)) & Math.pow(2, -2 * imod4 + 8) - 1) << imod4 * 2 | base64map.indexOf(base64.charAt(i)) >>> 6 - imod4 * 2);
+	      }
+	      return bytes;
+	    }
+	  };
+	
+	  module.exports = crypt;
+	})();
+
+/***/ },
+/* 191 */
+/***/ function(module, exports) {
+
+	var charenc = {
+	  // UTF-8 encoding
+	  utf8: {
+	    // Convert a string to a byte array
+	    stringToBytes: function (str) {
+	      return charenc.bin.stringToBytes(unescape(encodeURIComponent(str)));
+	    },
+	
+	    // Convert a byte array to a string
+	    bytesToString: function (bytes) {
+	      return decodeURIComponent(escape(charenc.bin.bytesToString(bytes)));
+	    }
+	  },
+	
+	  // Binary encoding
+	  bin: {
+	    // Convert a string to a byte array
+	    stringToBytes: function (str) {
+	      for (var bytes = [], i = 0; i < str.length; i++) bytes.push(str.charCodeAt(i) & 0xFF);
+	      return bytes;
+	    },
+	
+	    // Convert a byte array to a string
+	    bytesToString: function (bytes) {
+	      for (var str = [], i = 0; i < bytes.length; i++) str.push(String.fromCharCode(bytes[i]));
+	      return str.join('');
+	    }
+	  }
+	};
+	
+	module.exports = charenc;
+
+/***/ },
+/* 192 */
+/***/ function(module, exports) {
+
+	/*!
+	 * Determine if an object is a Buffer
+	 *
+	 * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+	 * @license  MIT
+	 */
+	
+	// The _isBuffer check is for Safari 5-7 support, because it's missing
+	// Object.prototype.constructor. Remove this eventually
+	module.exports = function (obj) {
+	  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer);
+	};
+	
+	function isBuffer(obj) {
+	  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj);
+	}
+	
+	// For Node v0.10 support. Remove this eventually.
+	function isSlowBuffer(obj) {
+	  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
+	}
+
+/***/ },
+/* 193 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22586,16 +22903,16 @@
 	}
 
 /***/ },
-/* 190 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(191);
+	var content = __webpack_require__(195);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(193)(content, {});
+	var update = __webpack_require__(197)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -22612,21 +22929,21 @@
 	}
 
 /***/ },
-/* 191 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(192)();
+	exports = module.exports = __webpack_require__(196)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  min-width: 320px; }\n\nbody {\n  background-color: #f9f5ef; }\n\nli, p {\n  font-family: 'Roboto', sans-serif; }\n\na {\n  color: #006c63;\n  text-decoration: none; }\n\n.ApplicationLoggedIn {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding: 25px 0; }\n\n@media screen and (min-width: 320px) {\n  h1 {\n    font-family: 'Chonburi', serif;\n    font-size: 36px;\n    margin-top: 200px; }\n  .SignIn {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; }\n  .googleLogin {\n    background: url(\"/img/google.png\") no-repeat;\n    border-radius: 5px;\n    height: 60px;\n    margin-top: 50px;\n    outline: none;\n    width: 300px; }\n    .googleLogin:hover {\n      cursor: pointer;\n      box-shadow: 3px 3px 3px #8f8d8d; } }\n\n@media screen and (min-width: 700px) {\n  h1 {\n    font-size: 60px; } }\n\n@media screen and (min-width: 320px) {\n  .CreateContact {\n    display: flex;\n    flex-direction: column;\n    width: 250px; }\n  input[type=text],\n  [type=email] {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0;\n    text-indent: 5px;\n    box-shadow: 0.1px 0.1px 0 0 #888; }\n  .Notes {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0;\n    text-indent: 5px;\n    border-color: #bec0c1;\n    outline: none;\n    resize: none; }\n  .CreateContactButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-top: 5px; }\n    .CreateContactButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  label {\n    margin: 5px 0; }\n  li {\n    color: #5e5d61; } }\n\n@media screen and (min-width: 320px) {\n  .MiniContactCard {\n    background-color: #bec0c1;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    min-height: 75px;\n    line-height: 1.2em;\n    margin: 10px 0;\n    padding: 10px;\n    width: 230px; }\n    .MiniContactCard li {\n      max-width: 150px;\n      margin-bottom: 5px; }\n  .ContactCardInfo {\n    float: left;\n    overflow-wrap: break-word;\n    padding-left: 15x;\n    word-break: break-all; }\n  .ProfilePlaceholder {\n    float: right;\n    height: 60px;\n    width: 60px; }\n  .ExpandContact {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    border-radius: 3px;\n    height: 45px;\n    width: 45px; }\n    .ExpandContact:hover {\n      cursor: pointer;\n      background-color: #009588; } }\n\n@media screen and (min-width: 320px) {\n  .FullContactCard {\n    background-color: #bec0c1;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    line-height: 1.5em;\n    margin: 20px 0;\n    min-height: 250px;\n    padding: 10px;\n    width: 230px; }\n  .DeleteContact {\n    margin-top: 5px; }\n  .SortButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-top: 10px; }\n    .SortButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  .ContactButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    color: #fff;\n    font-size: 2em;\n    height: 45px;\n    margin: 0 5px;\n    position: relative;\n    right: -120px;\n    width: 45px; }\n    .ContactButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  span {\n    color: #26292b;\n    font-weight: bold;\n    word-break: break-word; } }\n\n.react-toggle-label {\n  background-color: #006c63;\n  border: none;\n  border-radius: 5px;\n  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n  color: #fff;\n  font-size: 1.2em;\n  height: 45px;\n  min-width: 250px;\n  outline: none;\n  align-items: center;\n  display: flex;\n  font-family: 'Roboto', sans-serif;\n  font-size: 1.2em; }\n  .react-toggle-label:hover {\n    cursor: pointer;\n    background-color: #009588; }\n\n.react-toggle {\n  background-color: transparent;\n  border: 0;\n  cursor: pointer;\n  display: inline-block;\n  height: 45px;\n  padding: 0;\n  position: relative;\n  width: 45px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-tap-highlight-color: transparent; }\n\n.FollowupCheckbox {\n  height: 45px;\n  width: 45px; }\n\n.react-toggle-track-check, .react-toggle-track-x {\n  display: none; }\n\n@media screen and (min-width: 320px) {\n  .UserInfo {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: space-around;\n    max-width: 260px;\n    min-width: 250px;\n    padding: 5px;\n    margin-bottom: 5px; }\n  .UserInfoDisplayName {\n    align-items: flex-end;\n    display: flex;\n    flex-wrap: wrap;\n    font-family: 'Roboto', sans-serif;\n    font-size: 2em;\n    justify-content: space-around;\n    padding: 5px; }\n  .ProfileImage {\n    border-radius: 100%;\n    height: 60px;\n    width: 60px; }\n  .SignOut {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-bottom: 10px; }\n    .SignOut:hover {\n      cursor: pointer;\n      background-color: #009588; } }\n\n@media screen and (min-width: 320px) {\n  .renderContact {\n    border-bottom: 1px solid #999499;\n    border-top: 1px solid #999499;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; } }\n", ""]);
+	exports.push([module.id, "html, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nhtml {\n  min-width: 320px; }\n\nbody {\n  background-color: #f9f5ef; }\n\nli, p {\n  font-family: 'Roboto', sans-serif; }\n\na {\n  color: #006c63;\n  text-decoration: none; }\n\n.ApplicationLoggedIn {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding: 20px 0; }\n\n@media screen and (min-width: 320px) {\n  h1 {\n    font-family: 'Chonburi', serif;\n    font-size: 36px;\n    margin-top: 200px; }\n  .SignIn {\n    align-items: center;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; }\n  .googleLogin {\n    background: url(\"/img/google.png\") no-repeat;\n    border-radius: 5px;\n    height: 60px;\n    margin-top: 50px;\n    outline: none;\n    width: 300px; }\n    .googleLogin:hover {\n      cursor: pointer;\n      box-shadow: 3px 3px 3px #8f8d8d; } }\n\n@media screen and (min-width: 700px) {\n  h1 {\n    font-size: 60px; } }\n\n@media screen and (min-width: 320px) {\n  .CreateContact {\n    display: flex;\n    flex-direction: column;\n    margin-top: 5px;\n    width: 250px; }\n  input[type=text],\n  [type=email], [type=tel] {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0;\n    text-indent: 5px;\n    box-shadow: 0.1px 0.1px 0 0 #888; }\n  .Notes {\n    font-family: 'Roboto', sans-serif;\n    font-size: 16px;\n    margin: 5px 0;\n    text-indent: 5px;\n    border-color: #bec0c1;\n    outline: none;\n    resize: none; }\n  .CreateContactButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-top: 5px; }\n    .CreateContactButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  label {\n    margin: 5px 0; }\n  li {\n    color: #49484b; } }\n\n@media screen and (min-width: 700px) {\n  .CreateContact {\n    width: 40%; }\n  li {\n    padding: 5px 0 0 10px; } }\n\n@media screen and (min-width: 320px) {\n  .MiniContactCard {\n    background-color: #bec0c1;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    min-height: 75px;\n    line-height: 1.2em;\n    margin: 10px 0;\n    padding: 10px;\n    width: 230px; }\n    .MiniContactCard li {\n      max-width: 150px;\n      margin-bottom: 5px; }\n  .ContactCardInfo {\n    float: left;\n    overflow-wrap: break-word;\n    padding-left: 15x;\n    word-break: break-all; }\n  .ProfilePhoto {\n    float: right;\n    height: 60px;\n    width: 60px; }\n  .ExpandContact {\n    display: none; } }\n\n@media screen and (min-width: 500px) {\n  .MiniContactCard {\n    width: 95%; }\n    .MiniContactCard li {\n      max-width: 175px; } }\n\n@media screen and (min-width: 800px) {\n  .MiniContactCard {\n    width: 95%; }\n    .MiniContactCard li {\n      max-width: 200px; }\n  .ProfilePhoto {\n    height: 80px;\n    width: 80px; }\n  .ExpandContact {\n    background-color: #006c63;\n    border: none;\n    border-radius: 3px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    color: #fff;\n    display: block;\n    font-family: 'Roboto', sans-serif;\n    height: 20px;\n    margin-left: 10px;\n    outline: none;\n    width: 80px; }\n    .ExpandContact:hover {\n      cursor: pointer;\n      background-color: #009588; } }\n\n@media screen and (min-width: 320px) {\n  .FullContactCard {\n    background-color: #bec0c1;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    line-height: 1.5em;\n    margin: 10px 0;\n    min-height: 250px;\n    padding: 10px;\n    width: 230px; }\n  .DeleteContact {\n    margin-top: 5px; }\n  .SortButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-top: 10px; }\n    .SortButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  .ContactButton {\n    background-color: #006c63;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.4);\n    color: #fff;\n    font-size: 2em;\n    height: 45px;\n    margin: 0 5px;\n    position: relative;\n    right: -15px;\n    width: 45px; }\n    .ContactButton:hover {\n      cursor: pointer;\n      background-color: #009588; }\n  span {\n    color: #26292b;\n    font-weight: bold;\n    word-break: break-word; }\n  .ContactActionButtons {\n    display: flex;\n    align-items: center;\n    width: 230px; } }\n\n@media screen and (min-width: 700px) {\n  .FullContactCard {\n    width: 95%; }\n  .ContactActionButtons {\n    display: flex;\n    justify-content: space-between;\n    margin-top: 20px;\n    width: 95%; } }\n\n.react-toggle-label {\n  background-color: #006c63;\n  border: none;\n  border-radius: 5px;\n  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n  color: #fff;\n  font-size: 1.2em;\n  height: 45px;\n  min-width: 250px;\n  outline: none;\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  font-family: 'Roboto', sans-serif;\n  font-size: 1.2em;\n  padding-left: 20px; }\n  .react-toggle-label:hover {\n    cursor: pointer;\n    background-color: #009588; }\n\n.FollowupCheckbox {\n  height: 20px;\n  width: 20px;\n  margin-top: 15px; }\n\n.ReactToggleContact {\n  align-items: center;\n  display: flex;\n  background-color: #006c63;\n  border: none;\n  border-radius: 5px;\n  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba;\n  color: #fff;\n  font-family: 'Roboto', sans-serif;\n  height: 45px;\n  min-width: 110px; }\n  .ReactToggleContact:hover {\n    cursor: pointer;\n    background-color: #009588; }\n\n.react-toggle {\n  background-color: transparent;\n  border: 0;\n  cursor: pointer;\n  display: inline-block;\n  height: 45px;\n  padding: 0;\n  position: relative;\n  width: 30px;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-tap-highlight-color: transparent; }\n\n.react-toggle-track-check, .react-toggle-track-x {\n  display: none; }\n\n@media screen and (min-width: 700px) {\n  .react-toggle-label {\n    align-items: center;\n    display: flex;\n    justify-content: center;\n    padding-right: 25px; }\n  .ReactToggleContact {\n    margin-left: 10px; } }\n\n@media screen and (min-width: 320px) {\n  .UserInfo {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: nowrap;\n    justify-content: space-around;\n    max-width: 260px;\n    min-width: 250px;\n    padding: 5px;\n    margin-bottom: 5px; }\n  .UserInfoDisplayName {\n    align-items: flex-end;\n    display: flex;\n    flex-wrap: wrap;\n    font-family: 'Roboto', sans-serif;\n    font-size: 2em;\n    justify-content: space-around;\n    padding: 5px; }\n  .ProfileImage {\n    border-radius: 100%;\n    height: 60px;\n    width: 60px; }\n  .SignOut {\n    background-color: #006c63;\n    border: none;\n    border-radius: 5px;\n    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.2);\n    color: #fff;\n    font-size: 1.2em;\n    height: 45px;\n    min-width: 250px;\n    outline: none;\n    margin-bottom: 10px; }\n    .SignOut:hover {\n      cursor: pointer;\n      background-color: #009588; } }\n\n@media screen and (min-width: 700px) {\n  .UserInfo {\n    max-width: 350px;\n    min-width: 340px; }\n  .SignOut {\n    width: 25%; }\n  .ProfileImage {\n    height: 80px;\n    width: 80px; } }\n\n@media screen and (min-width: 320px) {\n  .renderContact {\n    border-bottom: 1px solid #999499;\n    border-top: 1px solid #999499;\n    display: flex;\n    flex-direction: column;\n    justify-content: center; } }\n\n@media screen and (min-width: 700px) {\n  .renderContact {\n    width: 40%; } }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 192 */
+/* 196 */
 /***/ function(module, exports) {
 
 	/*
@@ -22679,7 +22996,7 @@
 	};
 
 /***/ },
-/* 193 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
