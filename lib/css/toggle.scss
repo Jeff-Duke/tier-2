@@ -1,3 +1,29 @@
+
+.react-toggle-label {
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  background-color: darken(#009588, 10%);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.2em;
+  height: 45px;
+  min-width: 230px;
+  margin: 10px 0;
+  &:hover {
+    cursor: pointer;
+    background-color: darken(#009588, 20%);
+  }
+}
+
+.react-toggle--checked {
+  background: #000;
+}
+
+
+
 .react-toggle {
   display: inline-block;
   position: relative;
@@ -5,6 +31,8 @@
   background-color: transparent;
   border: 0;
   padding: 0;
+  height: 45px;
+  width: 45px;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -15,6 +43,11 @@
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+}
+
+.FollowupCheckbox {
+  height: 45px;
+  width: 45px;
 }
 
 .react-toggle-track-check, .react-toggle-track-x {
