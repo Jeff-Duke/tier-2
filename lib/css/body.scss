@@ -6,14 +6,19 @@ body {
   background-color: #f9f5ef;
 }
 
+li, p {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: darken(#009588, 8%);
+  text-decoration: none;
+}
+
 .ApplicationLoggedIn {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 25px 0;
-}
-
-li, p {
-  font-family: 'Roboto', sans-serif;
 }
