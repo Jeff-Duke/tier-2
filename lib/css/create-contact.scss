@@ -3,6 +3,7 @@
   .CreateContact {
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
     width: 250px;
   }
 
@@ -29,6 +30,16 @@
   }
 
   li {
-    color: #5e5d61;
+    color: #49484b;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .CreateContact {
+    width: 40%;
+  }
+
+  li {
+    padding: 5px 0 0 10px;
   }
 }
