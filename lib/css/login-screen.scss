@@ -3,7 +3,7 @@
   h1 {
     font-family: 'Chonburi', serif;
     font-size: 36px;
-    margin: 80px 0;
+    margin-top: 200px;
   }
 
   .SignIn {
@@ -17,11 +17,19 @@
     background: url('/img/google.png') no-repeat;
     border-radius: 5px;
     height: 60px;
+    margin-top: 50px;
     outline: none;
     width: 300px;
     &:hover {
       cursor: pointer;
       box-shadow: 3px 3px 3px #8f8d8d;
     }
+  }
+}
+
+@media screen and (min-width: 700px) {
+
+  h1 {
+    font-size: 60px;
   }
 }

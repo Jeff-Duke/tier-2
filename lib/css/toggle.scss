@@ -1,37 +1,23 @@
-
 .react-toggle-label {
-  display: flex;
+  @include primary-button-styling;
   align-items: center;
+  display: flex;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.1em;
-  background-color: darken(#009588, 10%);
-  border: none;
-  border-radius: 5px;
-  color: #fff;
   font-size: 1.2em;
-  height: 45px;
-  min-width: 230px;
-  margin: 10px 0;
-  &:hover {
-    cursor: pointer;
-    background-color: darken(#009588, 20%);
-  }
 }
 
 .react-toggle--checked {
   background: #000;
 }
 
-
-
 .react-toggle {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
   background-color: transparent;
   border: 0;
-  padding: 0;
+  cursor: pointer;
+  display: inline-block;
   height: 45px;
+  padding: 0;
+  position: relative;
   width: 45px;
 
   -webkit-touch-callout: none;
