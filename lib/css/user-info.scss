@@ -32,3 +32,19 @@
     margin-bottom: 10px;
   }
 }
+
+@media screen and (min-width: 700px) {
+  .UserInfo {
+    max-width: 350px;
+    min-width: 340px;
+  }
+
+  .SignOut {
+    width: 25%;
+  }
+
+  .ProfileImage {
+    height: 80px;
+    width: 80px;
+  }
+}
