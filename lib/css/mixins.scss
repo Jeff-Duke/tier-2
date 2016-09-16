@@ -1,12 +1,15 @@
-@mixin primary-button-styling {
+@mixin flexbox-center-columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin button-styling {
   background-color: darken(#009588, 8%);
   border: none;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.2);
   color: #fff;
-  font-size: 1.2em;
-  height: 45px;
-  min-width: 250px;
   outline: none;
   &:hover {
     cursor: pointer;
@@ -15,31 +18,23 @@
 }
 
 @mixin input-fields {
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   margin: 5px 0;
+  padding: 10px;
   text-indent: 5px;
+  &:focus {
+    border-color: darken(#bec0c1, 10%);
+    outline: none;
+  }
 }
 
 @mixin contact-card-styling {
   background-color: #bec0c1;
   box-shadow: 0 2px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.4);
-}
-
-@mixin full-contact-card-buttons {
-  background-color: darken(#009588, 8%);
-  border: none;
-  border-radius: 100%;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.4);
-  color: #fff;
-  font-size: 2em;
-  height: 45px;
-  margin: 0 5px;
-  position: relative;
-  right: -15px;
-  width: 45px;
-  &:hover {
-    cursor: pointer;
-    background-color: #009588;
-  }
 }

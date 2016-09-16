@@ -1,37 +1,40 @@
-@media screen and (min-width: 320px) {
+.CreateContact {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 250px;
+}
 
-  .CreateContact {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    width: 250px;
-  }
-
-  input[type=text],
-  [type=email], [type=tel] {
-    @include input-fields;
-    box-shadow: 0.1px 0.1px 0 0 #888;
-  }
-
-  .Notes {
-    @include input-fields;
-    border-color: #bec0c1;
+input[type=text],
+[type=email], [type=tel] {
+  @include input-fields;
+  &:focus {
+    border: 1.5px solid #bec0c1;
     outline: none;
-    resize: none;
   }
+}
 
-  .CreateContactButton {
-    @include primary-button-styling;
-    margin-top: 5px;
-  }
+.Notes {
+  @include input-fields;
+  border-color: #bec0c1;
+  outline: none;
+  resize: none;
+}
 
-  label {
-    margin: 5px 0;
-  }
+.CreateContactButton {
+  @include button-styling;
+  font-size: 1.2em;
+  height: 45px;
+  margin-top: 5px;
+  min-width: 250px;
+}
 
-  li {
-    color: #49484b;
-  }
+label {
+  margin: 5px 0;
+}
+
+li {
+  color: #49484b;
 }
 
 @media screen and (min-width: 700px) {

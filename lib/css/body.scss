@@ -16,9 +16,7 @@ a {
 }
 
 .ApplicationLoggedIn {
+  @include flexbox-center-columns;
   align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   padding: 20px 0;
 }
