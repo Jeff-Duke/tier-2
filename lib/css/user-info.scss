@@ -1,36 +1,38 @@
-@media screen and (min-width: 320px) {
+.UserInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  max-width: 260px;
+  min-width: 250px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
 
-  .UserInfo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    max-width: 260px;
-    min-width: 250px;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
+.UserInfoDisplayName {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  justify-content: space-around;
+  padding: 5px;
+}
 
-  .UserInfoDisplayName {
-    align-items: flex-end;
-    display: flex;
-    flex-wrap: wrap;
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em;
-    justify-content: space-around;
-    padding: 5px;
-  }
+.ProfileImage {
+  border-radius: 100%;
+  height: 60px;
+  width: 60px;
+}
 
-  .ProfileImage {
-    border-radius: 100%;
-    height: 60px;
-    width: 60px;
-  }
+.SignOut {
+  @include button-styling;
+  margin-bottom: 10px;
+  width: 60px;
+}
 
-  .SignOut {
-    @include primary-button-styling;
-    margin-bottom: 10px;
-  }
+.SignOutButton {
+  margin-left: 190px;
 }
 
 @media screen and (min-width: 700px) {
@@ -39,12 +41,12 @@
     min-width: 340px;
   }
 
-  .SignOut {
-    width: 25%;
-  }
-
   .ProfileImage {
     height: 80px;
     width: 80px;
+  }
+
+  .SignOutButton {
+    margin-left: 250px;
   }
 }

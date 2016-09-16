@@ -1,10 +1,12 @@
 .react-toggle-label {
-  @include primary-button-styling;
+  @include button-styling;
   align-items: center;
   box-sizing: border-box;
   display: flex;
   font-family: 'Roboto', sans-serif;
   font-size: 1.2em;
+  height: 45px;
+  min-width: 250px;
   padding-left: 20px;
 }
 
@@ -15,20 +17,12 @@
 }
 
 .ReactToggleContact {
+  @include button-styling;
   align-items: center;
   display: flex;
-  background-color: darken(#009588, 8%);
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.2), 0 1px 2px rgba;
-  color: #fff;
   font-family: 'Roboto', sans-serif;
   height: 45px;
   min-width: 110px;
-  &:hover {
-    cursor: pointer;
-    background-color: #009588;
-  }
 }
 
 .react-toggle {

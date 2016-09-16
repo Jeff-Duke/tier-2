@@ -1,38 +1,36 @@
-@media screen and (min-width: 320px) {
-  .MiniContactCard {
-    @include contact-card-styling;
-    min-height: 75px;
-    line-height: 1.2em;
-    margin: 10px 0;
-    padding: 10px;
-    width: 230px;
-      li {
-        max-width: 150px;
-        margin-bottom: 5px;
-      }
-  }
+.MiniContactCard {
+  @include contact-card-styling;
+  min-height: 75px;
+  line-height: 1.2em;
+  margin: 10px 0;
+  padding: 10px;
+  width: 230px;
+    li {
+      max-width: 150px;
+      margin-bottom: 5px;
+    }
+}
 
-  .ContactCardInfo {
-    float: left;
-    overflow-wrap: break-word;
-    padding-left: 15x;
-    word-break: break-all;
-  }
+.ContactCardInfo {
+  float: left;
+  overflow-wrap: break-word;
+  padding-left: 15x;
+  word-break: break-all;
+}
 
-  .ProfilePhoto {
-    float: right;
-    height: 60px;
-    width: 60px;
-  }
+.ProfilePhoto {
+  float: right;
+  height: 60px;
+  width: 60px;
+}
 
-  .ExpandContact {
-    display: none;
-  }
+.ExpandContact {
+  display: none;
 }
 
 @media screen and (min-width: 500px) {
   .MiniContactCard {
-    width: 95%;
+    width: 93%;
       li {
         max-width: 175px;
       }
@@ -48,25 +46,17 @@
   }
 
   .ProfilePhoto {
+    border-radius: 100%;
     height: 80px;
     width: 80px;
   }
 
   .ExpandContact {
-    background-color: darken(#009588, 8%);
-    border: none;
-    border-radius: 3px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.4);
-    color: #fff;
+    @include button-styling
     display: block;
     font-family: 'Roboto', sans-serif;
     height: 20px;
     margin-left: 10px;
-    outline: none;
     width : 80px;
-    &:hover {
-      cursor: pointer;
-      background-color: #009588;
-    }
   }
 }
